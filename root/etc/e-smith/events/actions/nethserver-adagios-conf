@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#
+# Copyright (C) 2015 Nethesis S.r.l.
+# http://www.nethesis.it - nethserver@nethesis.it
+#
+# This script is part of NethServer.
+#
+# NethServer is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License,
+# or any later version.
+#
+# NethServer is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with NethServer.  If not, see COPYING.
+#
+
+confd=/etc/nagios
+
+if [[ ! -d ${confd}/adagios ]]; then
+    mkdir ${confd}/adagios
+    pynag config --append cfg_dir=${confd}/adagios
+    pynag config --append "broker_module=/usr/lib64/nagios/brokers/npcdmod.o config_file=/etc/pnp4nagios/npcd.cfg"
+    pynag config --append "broker_module=/usr/lib64/mk-livestatus/livestatus.o /var/spool/nagios/cmd/livestatus"
+    pynag config --set "process_performance_data=1"
+
+fi
+
+if ! [[ -d ${confd}/.git ]]; then
+    mkdir ${confd}/.git
+    chown nagios:nagios ${confd}/.git
+fi
+
+# Add nagios to apache group so it has permissions to pnp4nagios's
+# session files
+if ! groups nagios | grep -q apache ; then
+    usermod -a -G apache nagios
+fi
