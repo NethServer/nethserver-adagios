@@ -32,8 +32,8 @@ if [[ ! -d ${confd}/adagios ]]; then
 fi
 
 if ! [[ -d ${confd}/.git ]]; then
-    mkdir ${confd}/.git
-    chown nagios:nagios ${confd}/.git
+    git init ${confd}
+    chown -R nagios:nagios ${confd}/.git
 fi
 
 # Add nagios to apache group so it has permissions to pnp4nagios's
