@@ -12,6 +12,7 @@ License: GPL
 
 BuildRequires: nethserver-devtools
 
+Requires: nethserver-xinetd
 Requires: pnp4nagios
 Requires: mk-livestatus
 Requires: nagios

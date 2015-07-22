@@ -33,4 +33,5 @@ event_services('nethserver-adagios-update', qw(
    nrpe restart
    nagios restart
    httpd restart
+   xinetd reload
 ));
