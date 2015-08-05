@@ -41,3 +41,8 @@ fi
 if ! groups nagios | grep -q apache ; then
     usermod -a -G apache nagios
 fi
+
+# Grant ownership of .cfg files from nagios RPM, under
+# /etc/nagios/objects:
+chown -c nagios $(rpm -qc nagios | grep ^/etc/nagios/objects)
+
