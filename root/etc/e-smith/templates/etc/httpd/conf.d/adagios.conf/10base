@@ -1,0 +1,21 @@
+#
+# 10base
+#
+
+# Create the wsgi process group
+WSGISocketPrefix run/wsgi
+WSGIDaemonProcess adagios user=nagios group=nagios processes=1 threads=25
+WSGIScriptAlias /adagios /usr/lib/python2.6/site-packages/adagios/wsgi.py
+
+# Run adagios under /adagios
+Alias /adagios/media /usr/lib/python2.6/site-packages/adagios/media
+
+<Location /adagios>
+   # Everything under /adagios runs in the above process group
+   WSGIProcessGroup adagios
+   # Redirect /adagios to /adagios/
+   # So path to css/javascript works
+   RedirectMatch ^/adagios$ /adagios/
+</Location>
+
+

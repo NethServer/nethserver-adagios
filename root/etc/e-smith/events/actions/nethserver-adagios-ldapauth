@@ -17,26 +17,11 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with NethServer.  If not, see COPYING.
+# along with NethServer.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-use esmith::Build::CreateLinks  qw(:all);
+use strict;
+use NethServer::Directory;
 
+NethServer::Directory->new()->configServiceAccount('adagios', NethServer::Directory::FIELDS_READ) || die("Failed to register adagios service account");
 
-event_actions('nethserver-adagios-update', qw(
-   initialize-default-databases 00
-   nethserver-adagios-conf 30
-   nethserver-adagios-ldapauth 40
-));
-
-event_templates('nethserver-adagios-update', qw(
-   /etc/httpd/conf.d/adagios.conf
-));
-
-event_services('nethserver-adagios-update', qw(
-   npcd restart
-   nrpe restart
-   nagios restart
-   httpd restart
-   xinetd reload
-));
