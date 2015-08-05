@@ -1,2 +1,1 @@
-/etc/nagios
-/etc/adagios/adagios.conf
+/var/lib/pnp4nagios/
