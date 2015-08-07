@@ -2,6 +2,7 @@
 # 20ldapauth
 #
 <Directory "/usr/lib64/nagios/cgi-bin/">
+   SSLRequireSSL
    AuthType Basic
    AuthName "Nagios Access"
    AuthBasicProvider ldap
@@ -13,6 +14,7 @@
 </Directory>
 
 <Directory "/usr/share/nagios/html">
+   SSLRequireSSL
    AuthType Basic
    AuthName "Nagios Access"
    AuthBasicProvider ldap

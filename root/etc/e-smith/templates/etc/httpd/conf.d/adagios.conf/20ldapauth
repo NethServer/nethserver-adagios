@@ -2,6 +2,7 @@
 # 20ldapauth
 #
 <Location /adagios>
+   SSLRequireSSL
    AuthType Basic
    AuthName "Nagios Access"
    AuthBasicProvider ldap

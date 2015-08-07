@@ -3,6 +3,7 @@
 #
 
 <Directory "/usr/share/nagios/html/pnp4nagios">
+   SSLRequireSSL
    AuthType Basic
    AuthName "Nagios Access"
    AuthBasicProvider ldap
