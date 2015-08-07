@@ -14,6 +14,7 @@ BuildRequires: nethserver-devtools
 
 Requires: nethserver-xinetd
 Requires: nethserver-httpd
+Requires: nethserver-directory
 Requires: pnp4nagios
 Requires: mk-livestatus
 Requires: nagios

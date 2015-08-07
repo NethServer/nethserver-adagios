@@ -31,6 +31,8 @@ event_actions('nethserver-adagios-update', qw(
 
 event_templates('nethserver-adagios-update', qw(
    /etc/httpd/conf.d/adagios.conf
+   /etc/httpd/conf.d/nagios.conf
+   /etc/httpd/conf.d/pnp4nagios.conf
 ));
 
 event_services('nethserver-adagios-update', qw(

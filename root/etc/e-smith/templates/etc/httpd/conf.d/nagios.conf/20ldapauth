@@ -1,0 +1,26 @@
+#
+# 20ldapauth
+#
+<Directory "/usr/lib64/nagios/cgi-bin/">
+   AuthType Basic
+   AuthName "Nagios Access"
+   AuthBasicProvider ldap
+   AuthLDAPBindDN cn=adagios,dc=directory,dc=nh
+   AuthLDAPBindPassword { NethServer::Password::store('adagios') }
+   AuthLDAPURL "ldap://localhost/ou=People,dc=directory,dc=nh?uid?sub?(objectClass=posixAccount)"
+   Require user admin
+   Satisfy all
+</Directory>
+
+<Directory "/usr/share/nagios/html">
+   AuthType Basic
+   AuthName "Nagios Access"
+   AuthBasicProvider ldap
+   AuthLDAPBindDN cn=adagios,dc=directory,dc=nh
+   AuthLDAPBindPassword { NethServer::Password::store('adagios') }
+   AuthLDAPURL "ldap://localhost/ou=People,dc=directory,dc=nh?uid?sub?(objectClass=posixAccount)"
+   Require user admin
+   Satisfy all
+</Directory>
+
+
