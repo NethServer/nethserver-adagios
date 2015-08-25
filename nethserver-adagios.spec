@@ -1,7 +1,7 @@
 %global opinkerfi_misc_commit 4d68cca3ce76ee3bc76edd5d3e810e9b2bb221aa
 
 Name: nethserver-adagios
-Version: 0.0.1
+Version: 1.0.0
 Release: 1%{?dist}
 Summary: Conifigure Adagios
 Source0: %{name}-%{version}.tar.gz
@@ -49,5 +49,8 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 /usr/share/okconfig/client/windows/nsclient
 
 %changelog
+* Tue Aug 25 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1
+- Initial adagios package - Feature #3229 [NethServer]
+
 * Tue Jul 21 2015 Davide Principi <davide.principi@nethesis.it>
 - Initial version
