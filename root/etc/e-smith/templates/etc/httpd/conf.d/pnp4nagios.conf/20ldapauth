@@ -5,7 +5,7 @@
 <Directory "/usr/share/nagios/html/pnp4nagios">
    SSLRequireSSL
    AuthType Basic
-   AuthName "Nagios Access"
+   AuthName "NethServer LDAP"
    AuthBasicProvider ldap
    AuthLDAPBindDN cn=adagios,dc=directory,dc=nh
    AuthLDAPBindPassword { NethServer::Password::store('adagios') }
