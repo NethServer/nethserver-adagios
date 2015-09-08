@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/bin/bash
 
 #
 # Copyright (C) 2015 Nethesis S.r.l.
@@ -20,30 +20,11 @@
 # along with NethServer.  If not, see COPYING.
 #
 
-use esmith::Build::CreateLinks  qw(:all);
+export GIT_DIR=/etc/nagios/.git
 
-
-event_actions('nethserver-adagios-update', qw(
-   initialize-default-databases 00
-   nethserver-adagios-conf 30
-   nethserver-adagios-ldapauth 40
-));
-
-event_templates('nethserver-adagios-update', qw(
-   /etc/httpd/conf.d/adagios.conf
-   /etc/httpd/conf.d/nagios.conf
-   /etc/httpd/conf.d/pnp4nagios.conf
-));
-
-event_services('nethserver-adagios-update', qw(
-   npcd restart
-   nrpe restart
-   nagios restart
-   httpd restart
-   xinetd reload
-));
-
-event_actions('runlevel-adjust', qw(
-   nethserver-adagios-firstcommit 90
-))
+if ! git log -n 1 &>/dev/null; then
+     git add /etc/nagios
+     git commit -q -m 'Initial commit'
+     chown -Rf nagios:nagios ${GIT_DIR}
+fi
 
