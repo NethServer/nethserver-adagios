@@ -20,11 +20,15 @@
 # along with NethServer.  If not, see COPYING.
 #
 
-export GIT_DIR=/etc/nagios/.git
+set -e
+
+NAGDIR=/etc/nagios
+
+cd ${NAGDIR}
 
 if ! git log -n 1 &>/dev/null; then
-     git add /etc/nagios
-     git commit -q -m 'Initial commit'
-     chown -Rf nagios:nagios ${GIT_DIR}
+     git add .
+     git commit -q -m 'Initial commit on installation'
+     chown -Rf nagios:nagios ${NAGDIR}
 fi
 
