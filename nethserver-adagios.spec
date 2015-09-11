@@ -40,6 +40,8 @@ rm -rf %{buildroot}
 (cd root   ; find . -depth -print | cpio -dump %{buildroot})
 %{genfilelist} %{buildroot} > %{name}-%{version}-filelist
 
+sed -i '\| /etc/nagios/conf.d| d' %{name}-%{version}-filelist
+
 mkdir -p %{buildroot}/usr/share/okconfig/client/windows/nsclient
 cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/src/* %{buildroot}/usr/share/okconfig/client/windows/nsclient
 
@@ -47,6 +49,7 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %defattr(-,root,root)
 %doc COPYING
 /usr/share/okconfig/client/windows/nsclient
+%config /etc/nagios/conf.d/admin-contact.cfg
 
 %changelog
 * Tue Aug 25 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1

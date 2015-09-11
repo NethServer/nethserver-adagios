@@ -42,6 +42,12 @@ if ! groups nagios | grep -q apache ; then
     usermod -a -G apache nagios
 fi
 
+# Fix the admins group, by adding our "admin" user to it #3255
+sed -i '/members/ s/nagiosadmin$/nagiosadmin,admin/' /etc/nagios/objects/contacts.cfg
+
+# Grant admin all permissions on Nagios CGI UI
+sed -i '/^authorized_for_/ s/=nagiosadmin$/=nagiosadmin,admin/' /etc/nagios/cgi.cfg
+
 # Grant ownership of .cfg files from nagios RPM, under
 # /etc/nagios/objects:
 chown -c nagios $(rpm -qc nagios | grep ^/etc/nagios/objects)
