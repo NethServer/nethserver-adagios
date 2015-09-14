@@ -1,7 +1,7 @@
 %global opinkerfi_misc_commit 4d68cca3ce76ee3bc76edd5d3e810e9b2bb221aa
 
 Name: nethserver-adagios
-Version: 1.0.0
+Version: 1.0.1
 Release: 1%{?dist}
 Summary: Conifigure Adagios
 Source0: %{name}-%{version}.tar.gz
@@ -52,6 +52,11 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
 
 %changelog
+* Mon Sep 14 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.1-1
+- Adagios: the admin contact is not defined  - Bug #3255 [NethServer]
+- Execute initial commit of Nagios configuration - Enhancement #3254 [NethServer]
+- OCS Inventory LDAP authentication - Enhancement #3250 [NethServer]
+
 * Tue Aug 25 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1
 - Initial adagios package - Feature #3229 [NethServer]
 
