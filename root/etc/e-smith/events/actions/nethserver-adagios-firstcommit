@@ -29,6 +29,6 @@ cd ${NAGDIR}
 if ! git log -n 1 &>/dev/null; then
      git add .
      git commit -q -m 'Initial commit on installation'
-     chown -Rf nagios:nagios ${NAGDIR}
+     chown -Rf nagios:nagios ${NAGDIR}/.git
 fi
 

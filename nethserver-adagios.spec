@@ -2,7 +2,7 @@
 
 Name: nethserver-adagios
 Version: 1.0.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Conifigure Adagios
 Source0: %{name}-%{version}.tar.gz
 Source1: https://github.com/opinkerfi/misc/archive/%{opinkerfi_misc_commit}.tar.gz
@@ -41,6 +41,7 @@ rm -rf %{buildroot}
 %{genfilelist} %{buildroot} > %{name}-%{version}-filelist
 
 sed -i '\| /etc/nagios/conf.d| d' %{name}-%{version}-filelist
+sed -i '\| /etc/nagios$| d' %{name}-%{version}-filelist
 
 mkdir -p %{buildroot}/usr/share/okconfig/client/windows/nsclient
 cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/src/* %{buildroot}/usr/share/okconfig/client/windows/nsclient
@@ -52,6 +53,9 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
 
 %changelog
+* Mon Sep 14 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.1-2
+- Hotfix: limit nagios recursive chown to /etc/nagios/.git - Enhancement #3254 [NethServer]
+
 * Mon Sep 14 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.1-1
 - Adagios: the admin contact is not defined  - Bug #3255 [NethServer]
 - Execute initial commit of Nagios configuration - Enhancement #3254 [NethServer]
