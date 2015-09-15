@@ -36,7 +36,7 @@ class Adagios extends \Nethgui\Module\AbstractModule implements \NethServer\Modu
     {
         $host = explode(':',$_SERVER['HTTP_HOST']);
         return array(
-            'url' => "http://".$host[0]."/adagios/"
+            'url' => "https://".$host[0]."/adagios/"
         );
     }
 }
