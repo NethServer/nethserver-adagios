@@ -50,7 +50,7 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %defattr(-,root,root)
 %doc COPYING
 /usr/share/okconfig/client/windows/nsclient
-%config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
+%attr(0600,nagios,nagios) %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
 
 %changelog
 * Wed Sep 16 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.2-1
