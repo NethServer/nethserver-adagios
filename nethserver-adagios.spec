@@ -1,8 +1,8 @@
 %global opinkerfi_misc_commit 4d68cca3ce76ee3bc76edd5d3e810e9b2bb221aa
 
 Name: nethserver-adagios
-Version: 1.0.1
-Release: 2%{?dist}
+Version: 1.0.3
+Release: 1%{?dist}
 Summary: Conifigure Adagios
 Source0: %{name}-%{version}.tar.gz
 Source1: https://github.com/opinkerfi/misc/archive/%{opinkerfi_misc_commit}.tar.gz
@@ -50,10 +50,16 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %defattr(-,root,root)
 %doc COPYING
 /usr/share/okconfig/client/windows/nsclient
-%config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
+%attr(0600,nagios,nagios) %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Thu Nov 12 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.3-1
+- Adagios: can't change admin mail address for notification - Bug #3316 [NethServer]
+
+* Wed Sep 16 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.2-1
+- Adagios and OCS Inventory dashboard links broken - Bug #3256 [NethServer]
+
 * Mon Sep 14 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.1-2
 - Hotfix: limit nagios recursive chown to /etc/nagios/.git - Enhancement #3254 [NethServer]
 
