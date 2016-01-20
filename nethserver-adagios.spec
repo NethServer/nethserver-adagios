@@ -15,6 +15,7 @@ BuildRequires: nethserver-devtools
 Requires: nethserver-xinetd
 Requires: nethserver-httpd
 Requires: nethserver-directory
+Requires: mod_ldap
 Requires: pnp4nagios
 Requires: mk-livestatus
 Requires: nagios
@@ -23,6 +24,7 @@ Requires: adagios
 Requires: okconfig
 Requires: python-setuptools
 Requires: nagios-plugins-all
+
 
 %description
 Install and configure an Adagios instance on NethServer
