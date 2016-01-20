@@ -51,6 +51,7 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %doc COPYING
 /usr/share/okconfig/client/windows/nsclient
 %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
+%dir %{_nseventsdir}/%{name}-update
 
 %changelog
 * Mon Sep 14 2015 Davide Principi <davide.principi@nethesis.it> - 1.0.1-2
