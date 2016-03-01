@@ -33,6 +33,7 @@ event_templates('nethserver-adagios-update', qw(
    /etc/httpd/conf.d/adagios.conf
    /etc/httpd/conf.d/nagios.conf
    /etc/httpd/conf.d/pnp4nagios.conf
+   /usr/share/okconfig/client/windows/nsclient/datafiles/allowed_hosts.ini
 ));
 
 event_services('nethserver-adagios-update', qw(
@@ -45,5 +46,10 @@ event_services('nethserver-adagios-update', qw(
 
 event_actions('runlevel-adjust', qw(
    nethserver-adagios-firstcommit 90
-))
+));
+
+
+event_templates('interface-update', qw(
+   /usr/share/okconfig/client/windows/nsclient/datafiles/allowed_hosts.ini
+));
 
