@@ -1,7 +1,7 @@
 %global opinkerfi_misc_commit 4d68cca3ce76ee3bc76edd5d3e810e9b2bb221aa
 
 Name: nethserver-adagios
-Version: 1.0.3
+Version: 1.0.4
 Release: 1%{?dist}
 Summary: Conifigure Adagios
 Source0: %{name}-%{version}.tar.gz
@@ -53,6 +53,9 @@ cp -av --no-preserve=mode %{_builddir}/misc-%{opinkerfi_misc_commit}/nsclient/sr
 %attr(0600,nagios,nagios) %config(noreplace) /etc/nagios/conf.d/admin-contact.cfg
 
 %changelog
+* Wed Mar 02 2016 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.4-1
+- Adagios: automatic IP configuration for nsclient - Enhancement #3362 [NethServer]
+
 * Thu Nov 12 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.0.3-1
 - Adagios: can't change admin mail address for notification - Bug #3316 [NethServer]
 
