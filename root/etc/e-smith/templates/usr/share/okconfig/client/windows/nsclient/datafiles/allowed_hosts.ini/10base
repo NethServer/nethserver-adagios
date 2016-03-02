@@ -1,0 +1,13 @@
+[Settings]
+{
+    use esmith::NetworksDB;
+    my $ndb = esmith::NetworksDB->open_ro();
+    my @ips = ('127.0.0.1');
+
+    foreach ($ndb->green()) {
+        push(@ips, $_->prop('ipaddr'));
+    }
+
+    $OUT .= "allowed_hosts=".join(',',@ips);
+}
+
